@@ -35,7 +35,8 @@ export function TaskProvider({ children }) {
 
   const createTaskR = async (task) => {
     const res = await createTask(task);
-    console.log(res);
+    console.log("res", res);
+    
   };
 
   const deleteTaskR = async (id) => {
@@ -50,6 +51,7 @@ export function TaskProvider({ children }) {
 
   const updateTaskR = async (id, task) => {
     const res = await updateTask(id, task);
+    console.log(res);
 
   }
 

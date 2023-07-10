@@ -30,7 +30,9 @@ const FormTasks = () => {
     const dataValid = {
       ...data,
       date: data.date ? dayjs.utc(data.date).format() : dayjs.utc().format(),
+      email: data.email ? data.email : "email@gmail.com"
     };
+    
 
     if (params.id) {
       updateTaskR(params.id, dataValid);
@@ -64,6 +66,12 @@ const FormTasks = () => {
           type="date"
           placeholder="Fecha"
           {...register("date")}
+          className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+        />
+         <input
+          type="email"
+          placeholder="Email"
+          {...register("email")}
           className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
         />
 
