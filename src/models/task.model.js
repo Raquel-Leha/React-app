@@ -16,12 +16,12 @@ const taskSchema = new mongoose.Schema({
         default: Date.now,
     },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: [mongoose.Schema.Types.ObjectId],
         ref: 'User',
         required: true,
     },
     email: {
-        type: String,
+        type: [String],
         
     }
 }, {

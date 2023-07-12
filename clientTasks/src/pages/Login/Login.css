@@ -1,0 +1,35 @@
+
+
+
+.form-div {
+    display: flex;
+    flex-direction: column;
+    width: 40vh;
+    margin-top: 50px;
+    
+
+}
+
+.form-div input {
+    height: 40px;
+    background-color: #1A2E4A;
+    color: white;
+    border: 1px solid #E9B537;
+}
+
+.p-text {
+    color:#1A2E4A;
+    font-weight: bold;
+}
+
+.link-style{
+    color:#1A2E4A;
+}
+
+.p-text button {
+    margin-left: 30px;
+}
+
+.errors-style {
+    color: red;
+}

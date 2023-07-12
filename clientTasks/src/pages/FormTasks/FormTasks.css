@@ -1,0 +1,29 @@
+
+.div-container {
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    width: 40vh;
+    height: auto;
+    background-color: #1A2E4A;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.main-container div {
+    margin: 30px 30px 15px 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 60%;
+    justify-content: space-between;
+}
+
+.button-div {
+    margin: 15px;
+}

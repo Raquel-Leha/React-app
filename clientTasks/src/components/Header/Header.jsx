@@ -1,29 +1,30 @@
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
+import  "./Header.css"
 
 function Header() {
   const { isAuthenticated, user, logout } = useAuth();
 
   return (
     <header>
-      <nav className="bg-zinc-700 my-3 flex justify-between py-5 px-10 rounded-lg">
+      <nav className="div-nav">
         <Link to="/">
-          <h1 className="text-2xl font-bold">Organizador de Tareas</h1>
+          <button>Organizador de Tareas</button>
         </Link>
-        <ul className="flex gap-x-2">
+        <div className="container">
           {isAuthenticated ? (
             <>
-              <li>Bienvenid@ {user.username}!</li>
+              <div className="div-welcome">Bienvenid@ {user.username}!</div>
 
-              <li>
+              <button>
                 <Link
                   to="/add-task"
                   className="bg-indigo-500 px-4 py-1 rounded-sm"
                 >
                   Añadir tarea
                 </Link>
-              </li>
-              <li>
+              </button>
+              <button>
                 <Link
                   to="/"
                   onClick={() => {
@@ -32,30 +33,30 @@ function Header() {
                 >
                   Logout
                 </Link>
-              </li>
+              </button>
             </>
           ) : (
             <>
-              <li>
+              <button>
                 <Link
                   to="/login"
-                  className="bg-indigo-500 px-4 py-1 rounded-sm"
+                
                 >
                   Login
                 </Link>
-              </li>
+              </button>
 
-              <li>
+              <button>
                 <Link
                   to="/register"
-                  className="bg-indigo-500 px-4 py-1 rounded-sm"
+                 
                 >
                   Registrarse
                 </Link>
-              </li>
+              </button>
             </>
           )}
-        </ul>
+        </div>
       </nav>
     </header>
   );

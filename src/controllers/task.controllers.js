@@ -2,6 +2,7 @@ import Task from "../models/task.model.js";
 import User from "../models/user.model.js";
 
 export const getTasks = async (req, res) => {
+  //Buscamos las tareas cuyo id coincida con el req.user.id 
   const tasks = await Task.find({
     user: req.user.id,
   }).populate("user");
@@ -9,30 +10,32 @@ export const getTasks = async (req, res) => {
 };
 
 export const createTasks = async (req, res) => {
-  const { title, description, date, email } = req.body;
-  console.log(req.user);
 
-  console.log("email de quien crea la tarea: " , req.user.email)
+  
+  const { title, description, date, email } = req.body;
 
   if (email !== "email@gmail.com") {
+
+    //Buscamos al usuario con el que se quiere compartir la tarea (id, email, username)
+    //y lo guardamos en user2
     const user2 = await User.findOne({
       email: email,
     });
-
+    //Buscamos el usuario que crea la tarea compartida y lo guardamos en user1
     const user1 = await User.findById(req.user.id)
-    console.log(user1.email);
+    
 
     const newTask = new Task({
       title,
       description,
       date,
-      user: req.user.id,
-      email: email,
+      user: [req.user.id, user2._id],
+      email: [user1.username, user2.username]
     });
 
     const savedTask = await newTask.save();
 
-    const newTask2 = new Task({
+    /*const newTask2 = new Task({
       title,
       description,
       date,
@@ -40,16 +43,16 @@ export const createTasks = async (req, res) => {
       email : user1.email,
     });
 
-    const savedTask2 = await newTask2.save();
+    const savedTask2 = await newTask2.save();*/
 
-    res.json(req.body);
+    res.json(savedTask);
   } else {
     const newTask = new Task({
       title,
       description,
       date,
-      user: req.user.id,
-      email
+      user: [req.user.id],
+      email: [email]
     });
 
     const savedTask = await newTask.save();
